@@ -7,6 +7,7 @@
     --foreground: #000000;
     --box: #f6f6ef;
     --link: #ff6600;
+    --headerbg: #ff6600;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -15,6 +16,7 @@
     --foreground: #000000;
     --box: #f6f6ef;
     --link: #ff6600;
+    --headerbg: #ff6600;
   }
 }
 
@@ -22,6 +24,7 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+  margin: 30px auto;
 }
 
 h1 {
@@ -29,37 +32,6 @@ h1 {
   margin-top: 20px;
   margin-bottom: 20px;
   font-size: 2rem;
-}
-
-.loading {
-  text-align: center;
-}
-
-#loader {
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  z-index: 99999;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.6),
-    rgba(0, 0, 0, 0.5)
-  );
-
-  .message {
-    position: relative;
-    transform: translate(-5%, -5%);
-    font-size: 20px;
-    top: 50%;
-    left: 50%;
-    color: #fff;
-  }
-}
-
-.loader-open {
-  overflow: hidden;
 }
 
 .hide {
@@ -70,39 +42,38 @@ h1 {
   font-weight: bold;
 }
 
-.nav-link {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  a {
-    margin: 10px;
-    text-transform: uppercase;
-    color: inherit;
-    letter-spacing: 2px;
-  }
-}
-
 .item {
   width: 90%;
-  margin: 5px auto;
-  border-radius: 5px;
-  padding: 5px;
+  margin: 0 auto;
   background: var(--box);
+  padding: 5px;
 
-  .item-title {
-    margin-bottom: 4px;
-    a:link,
-    a:visited {
-      font-size: 0.8rem;
-      color: var(--foreground);
-    }
-
-    a:hover,
-    a:active {
-      text-decoration: none;
-    }
+  .item-direction {
+    padding: 2px 0;
   }
+
+  .item-position {
+    padding: 2px 0;
+    font-size: 0.8rem;
+  }
+
+  .item-content {
+    .item-title {
+      font-size: 1rem;
+      
+      a:link,
+      a:visited {
+        font-size: 0.8rem;
+        color: var(--foreground);
+      }
+
+      a:hover,
+      a:active {
+        text-decoration: none;
+      }
+    }  
+  }
+
 
   .item-info {
     color: var(--link);
@@ -113,6 +84,32 @@ h1 {
     a {
       color: inherit;
     }
+  }
+}
+
+.list-header {
+  width: 90%;
+  margin: 5px auto;
+  padding: 5px;
+  background-color: var(--headerbg);
+
+  .title {
+    font-weight: 800;
+    font-size: 0.8rem;
+    color: var(--foreground);
+  }
+}
+
+.list-footer {
+  width: 90%;
+  margin: 5px auto;
+  padding: 5px;
+  text-align: center;
+
+  .message {
+    margin-bottom: 10px;
+    font-size: 1rem;
+    color: var(--foreground);
   }
 }
 

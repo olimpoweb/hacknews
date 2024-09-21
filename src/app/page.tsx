@@ -1,9 +1,9 @@
 "use client"
 
-import List from './components/List';
+import ListInfiniteRIO from './components/List';
 
 const HomePage = () => {
-  return <><List/></>;
+  return <><ListInfiniteRIO/></>;
 };
 
 export default HomePage;

@@ -1,6 +1,6 @@
-import { URL_API } from './consts';
-
+import { handleException } from "@/utils/handleException";
 import axios from 'axios';
+import { NEWS_PER_PAGE, URL_API } from './consts';
 
 /**
  * getById
@@ -13,8 +13,15 @@ export const getById = async (id: Number) => {
   try {
 
     const response = await axios.get(`${URL_API}/item/${id}.json`);
+    const data = response.data;
 
-    return response.data;
+    if (response.status !== 200) {
+
+      throw await handleException(response);
+    
+    }
+
+    return data;
   
   } catch (error) {
 
@@ -30,16 +37,21 @@ export const getById = async (id: Number) => {
  * @description Get all news from Hacker News API
  * @returns {Promise<News[]>}
  */
-export const getAllNews = async () => {
-  
+export const getAllNews = async (
+  offset: number
+) => {
   try {
 
     const { data: ids } = await axios.get(
       `${URL_API}/newstories.json?print=pretty`
     );
 
-    const response = await Promise.all(ids.slice(0, 30).map(getById));
+    const response = await Promise.all(ids.slice(offset, offset + NEWS_PER_PAGE).map(getById));
     
+    if (response.length === 0) {
+        throw new Error('No news found');
+    }
+
     return response;
   
   } catch (error) {
