@@ -4,7 +4,7 @@ const Header = () => {
 
   return (
     <>
-      <h1>Hacker News - Only New</h1>
+      <h1 className="text-2xl m-3 text-center">Hacker News - Only New</h1>
     </>
   );
 };

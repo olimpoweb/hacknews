@@ -1,4 +1,3 @@
-import { handleException } from "@/utils/handleException";
 import axios from 'axios';
 import { NEWS_PER_PAGE, URL_API } from './consts';
 
@@ -16,9 +15,8 @@ export const getById = async (id: Number) => {
     const data = response.data;
 
     if (response.status !== 200) {
-
-      throw await handleException(response);
-    
+      const statusCode = response.status;
+      throw new Error(`An error occurred with status code ${statusCode}`);
     }
 
     return data;

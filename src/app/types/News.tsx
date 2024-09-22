@@ -1,3 +1,6 @@
+/**
+ * News interface
+ */
 export interface News {
     id: number;
     title: string;
