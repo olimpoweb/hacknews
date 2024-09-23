@@ -19,6 +19,9 @@ export const metadata: Metadata = {
   description: "Test HackNews clone",
 };
 
+/**
+ * Layout for the application
+ */
 export default function RootLayout({
   children,
 }: Readonly<{
